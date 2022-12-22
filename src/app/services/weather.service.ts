@@ -1,23 +1,19 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { environment } from '.././environments/environment'
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core'; 
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-
-const BASE_URI = "https://open-weather13.p.rapidapi.com/city"
-const headers = {
-  headers: {
-    'X-RapidAPI-Key': RapidAPI,
-		'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
-  }
-}
 export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
   getWeatherData(cityName: string){
-    this.http.get(BASE_URI)
+    return this.http.get(environment.weatherBaseURI+cityName, {
+      headers: new HttpHeaders()
+      .set(environment.XRapidAPIHostHeaderName, environment.XRapidAPIHostHeaderValue)
+      .set(environment.XRapidAPIKeyHeaderName, environment.XRapidAPIKeyHeaderValue),
+    })
   }
 }
