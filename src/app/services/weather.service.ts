@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '.././environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { Injectable } from '@angular/core';
 const BASE_URI = "https://open-weather13.p.rapidapi.com/city"
 const headers = {
   headers: {
-    'X-RapidAPI-Key': '',
+    'X-RapidAPI-Key': RapidAPI,
 		'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
   }
 }
